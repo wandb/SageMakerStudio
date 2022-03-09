@@ -8,3 +8,5 @@ __pycache__
 logs
 summary*
 run*
+artifacts
+**/*/artifacts
