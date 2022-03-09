@@ -58,7 +58,7 @@ def benchmark_inference_time(
         f"Computing inference time over {num_iter} iterations with batches of {batch_size} images..."
     )
 
-    with torch.inference_mode():
+    with torch.no_grad():
         for step in progress_bar(range(num_iter)):
             starter.record()
             _ = model(dummy_input)
