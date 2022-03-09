@@ -1,0 +1,11 @@
+name: fastai
+channels:
+  - fastchan
+  - conda-forge
+dependencies:
+  - fastai>=2.2
+  - wandb
+  - ipykernel
+  - ipywidgets
+  - pandas
+  - matplotlib
