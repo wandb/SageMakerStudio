@@ -21,17 +21,17 @@ def main(_):
             "min_iter": config.early_terminate_min_iter,
         },
         "parameters": {
-            "batch_size": {"values": [4, 8, 16]},
-            "image_resize_factor": {"values": [2, 4]},
+            "batch_size": {"values": [8, 16]},
+            "image_resize_factor": {"values": [4]},
             "backbone": {
                 "values": [
-                    "mobilenetv2_100",
-                    "mobilenetv3_small_050",
+                    # "mobilenetv2_100",
+                    # "mobilenetv3_small_050",
                     "mobilenetv3_large_100",
-                    "resnet18",
-                    "resnet34",
+                    # "resnet18",
+                    # "resnet34",
                     "resnet50",
-                    "vgg19",
+                    # "vgg19",
                 ]
             },
             "loss_function": {"values": ["categorical_cross_entropy", "focal", "dice"]},
@@ -49,3 +49,10 @@ def main(_):
 
 if __name__ == "__main__":
     app.run(main)
+    
+sweep_id = wandb.sweep(
+    sweep_configs,
+    project=config.wandb_configs.project,
+    entity=config.wandb_configs.entity,
+)
+wandb.agent(sweep_id, function=partial(train_fn, config), count=config.sweep_count)

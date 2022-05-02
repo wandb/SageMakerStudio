@@ -6,8 +6,8 @@ def get_wandb_configs() -> ml_collections.ConfigDict:
     config = ml_collections.ConfigDict()
     
     config.name = None
-    config.project = "CamVid"
-    config.entity = "av-demo"
+    config.project = "sagemaker_camvid_demo"
+    config.entity = "capecape"
     config.job_type = "sweep"
     config.artifact_id = "camvid-dataset:latest"
 
@@ -59,7 +59,7 @@ def get_config() -> ml_collections.ConfigDict:
     config.wandb_configs = get_wandb_configs()
     config.loss_mappings = get_loss_mappings()
     config.inference = get_inference_config()
-    config.sweep_count = 5
+    config.sweep_count = 25
     config.sweep_method = "bayes"
     config.sweep_metric_name = "foreground_acc"
     config.sweep_goal = "maximize"
