@@ -1,6 +1,6 @@
 # Using Wandb and SageMaker Studio Lab
 
-This repo is acompanied of a blog post in AWS and on wandb.ai
+This repo is acompanied of a blog post in AWS and on [fully-connected](http://wandb.me/aws_studiolab)
 
 ## TLDR
 Try the Weights and Biases intro notebook in SageMaker StudioLab
