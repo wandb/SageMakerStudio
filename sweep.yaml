@@ -1,0 +1,26 @@
+program: train.py
+method: bayes
+project: sagemaker_camvid_demo
+metric:
+    name: foreground_acc
+    goal: maximize
+early_terminate:
+    type: hyperband
+    min_iter: 5
+parameters:
+    backbone:
+        values: ["mobilenetv2_100","mobilenetv3_small_050","mobilenetv3_large_100","resnet18","resnet34","resnet50","vgg19"]
+    batch_size: 
+        values: [8, 16]
+    image_resize_factor: 
+        value: 4
+    loss_function: 
+        values: ["categorical_cross_entropy", "focal", "dice"]
+    learning_rate: 
+        distribution: uniform 
+        min: 1e-5
+        max: 1e-2
+    weight_decay: 
+        distribution: uniform
+        min: 0.0 
+        max: 0.05
