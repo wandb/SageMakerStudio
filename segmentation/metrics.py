@@ -29,35 +29,35 @@ def dice_per_class(inp, targ):
 
 
 def _create_row(sample, pred_label, prediction, class_labels):
-        (image, label) = sample
-        # compute metrics
-        dice_scores = dice_per_class(prediction, label)
-        facc = faccuracy(prediction, label)
-        image = image.permute(1, 2, 0)
-        row =[
-                wandb.Image(image),
-                wandb.Image(
-                    image,
-                    masks={
-                        "predictions": {
-                            "mask_data": pred_label[0].numpy(),
-                            "class_labels": class_labels,
-                        }
-                    },
-                ),
-                wandb.Image(
-                    image,
-                    masks={
-                        "ground_truths": {
-                            "mask_data": label.numpy(),
-                            "class_labels": class_labels,
-                        }
-                    },
-                ),
-                *dice_scores,
-                facc,
-        ]
-        return row
+    (image, label) = sample
+    # compute metrics
+    dice_scores = dice_per_class(prediction, label)
+    facc = faccuracy(prediction, label)
+    image = image.permute(1, 2, 0)
+    row =[
+            wandb.Image(image),
+            wandb.Image(
+                image,
+                masks={
+                    "predictions": {
+                        "mask_data": pred_label[0].numpy(),
+                        "class_labels": class_labels,
+                    }
+                },
+            ),
+            wandb.Image(
+                image,
+                masks={
+                    "ground_truths": {
+                        "mask_data": label.numpy(),
+                        "class_labels": class_labels,
+                    }
+                },
+            ),
+            *dice_scores,
+            facc,
+    ]
+    return row
     
     
 def create_dice_table(samples, outputs, predictions, class_labels):
