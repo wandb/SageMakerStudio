@@ -8,7 +8,7 @@ Try the Weights and Biases intro notebook in SageMaker StudioLab
 [![Open In Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/wandb/SageMakerStudioLab/blob/main/Intro_to_Weights_&_Biases.ipynb)
 
 ## Install
-This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). The preferred way if using SageMaker StudioLab is using the automatic detection and creation of the conda environment.
+This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). SageMaker Studio Lab has  automatic detection and creation of the conda environment.
 
 ## Running the experiments
 - [01_data_processing.ipynb](01_data_processing.ipynb) presents how to log the CamVid dataset and how to do initial EDA.
@@ -20,13 +20,13 @@ This repo can be configured using the pip: [requirements.txt](requirements.txt) 
 We will perform an Hyper Parameter Sweep using the [sweep.yaml](sweep.yaml) configuration file. To run the sweep with defaults values, use:
 
 ```bash
-wandb sweep sweep.yaml
+$ wandb sweep sweep.yaml
 ```
 
 and then launch an agent using the suggested command line output
 
 ```bash
-wandb agent <sweep_id>
+$ wandb agent <sweep_id>
 ```
 
 > Note: this repo uses `ml_collections` to configure parameters. You can check the [config.py](config.py) file to inspect defaults.
