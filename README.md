@@ -4,8 +4,8 @@ This repo is acompanied of a blog post in AWS and on wandb.ai
 
 ## TLDR
 Try the Weights and Biases intro notebook in SageMaker StudioLab
-[![Open In Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)]
-(https://studiolab.sagemaker.aws/import/github/wandb/SageMakerStudioLab/blob/main//Intro_to_Weights_&_Biases.ipynb)
+
+[![Open In Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/wandb/SageMakerStudioLab/blob/main/Intro_to_Weights_&_Biases.ipynb)
 
 ## Install
 This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). The preferred way if using SageMaker StudioLab is using the automatic detection and creation of the conda environment.
