@@ -20,7 +20,7 @@ This repo can be configured using the pip: [requirements.txt](requirements.txt) 
 We will perform an Hyper Parameter Sweep using the [sweep.yaml](sweep.yaml) configuration file. To run the sweep with defaults values, use:
 
 ```bash
-wandb sweeep sweep.yaml
+wandb sweep sweep.yaml
 ```
 
 and then launch an agent using the suggested command line output
