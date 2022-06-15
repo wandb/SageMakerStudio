@@ -1,14 +1,9 @@
-# Using Wandb and SageMaker Studio Lab
+# Using Wandb and SageMaker Studio
 
-This repo is acompanied of a blog post in AWS and on [fully-connected](http://wandb.me/aws_studiolab)
-
-## TLDR
-Try Weights and Biases intro notebook in SageMaker Studio Lab
-
-[![Open In Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/wandb/SageMakerStudioLab/blob/main/Intro_to_Weights_&_Biases.ipynb)
+This repo is acompanied of a blog post in AWS and on [fully-connected](http://wandb.me/aws_studio)
 
 ## Install
-This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). SageMaker Studio Lab has automatic detection and creation of the conda environment.
+This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). SageMaker Studio can be configured using both.
 
 ## Running the experiments
 - [01_data_processing.ipynb](01_data_processing.ipynb) presents how to log the CamVid dataset and how to do initial EDA.
