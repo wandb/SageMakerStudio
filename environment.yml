@@ -6,6 +6,7 @@ dependencies:
   - fastai
   - wandb
   - ipykernel
+  - pip
   - pip:
       - timm
       - ml_collections
