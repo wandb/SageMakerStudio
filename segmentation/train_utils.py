@@ -31,7 +31,7 @@ def get_predictions(learner, test_dl=None, max_n=None):
 
 def benchmark_inference_time(
     model_file,
-    image_shape: tuple[int, int],
+    image_shape: Tuple[int, int],
     batch_size: int,
     num_warmup_iters: int,
     num_iter: int,

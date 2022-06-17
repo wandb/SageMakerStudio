@@ -1,5 +1,4 @@
-fastai
-torch
-jupyterlab
+fastai<3.0
+timm
 wandb
 ml_collections
