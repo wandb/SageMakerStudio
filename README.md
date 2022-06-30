@@ -1,6 +1,6 @@
 # Using Wandb and SageMaker Studio
 
-This repo is acompanied of a blog post in AWS and on [fully-connected](http://wandb.me/aws_studio)
+This repo is acompanied of a blog post in AWS and on [fully-connected](http://wandb.me/aws_studiolab)
 
 ## Install
 This repo can be configured using the pip: [requirements.txt](requirements.txt) or the conda: [environment.yml](environment.yml). SageMaker Studio can be configured using both.
