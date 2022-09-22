@@ -15,10 +15,24 @@ from segmentation.metrics import *
 # Config
 FLAGS = flags.FLAGS
 CONFIG = config_flags.DEFINE_config_file("config")
+# Flags for sweep
+flags.DEFINE_string("backbone", "mobilenetv2_100", "Backbone to be used.")
+flags.DEFINE_integer("batch_size", 8, "Batch size to be used.")
+flags.DEFINE_integer("image_resize_factor", 4, "Factor for image resizing.")
+flags.DEFINE_string("loss_function", False, "Loss function to be used.")
+flags.DEFINE_float("learning_rate", 1e-3, "Learning Rate for training the model")
+flags.DEFINE_float("weight_decay", 1e-2, "Weight decay rate")
 
 
 def main(_):
     configs = CONFIG.value
+    config.experiment_configs.backbone = FLAGS.backbone
+    config.experiment_configs.batch_size = FLAGS.batch_size
+    config.experiment_configs.image_resize_factor = FLAGS.image_resize_factor
+    config.experiment_configs.loss_function = FLAGS.loss_function
+    config.experiment_configs.learning_rate = FLAGS.learning_rate
+    config.experiment_configs.weight_decay = FLAGS.weight_decay
+    
     wandb_configs = configs.wandb_configs
     experiment_configs = configs.experiment_configs
     loss_alias_mappings = configs.loss_mappings
