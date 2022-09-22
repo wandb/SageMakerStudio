@@ -1,29 +1,38 @@
-# USAGE: python train.py --config configs.py
-import gc
+# USAGE: python train.py --help
+import argparse
 import wandb
-from absl import app
-from absl import flags
 import ml_collections
-from ml_collections.config_flags import config_flags
 from fastai.vision.all import *
 
 from segmentation.camvid_utils import *
 from segmentation.train_utils import *
 from segmentation.metrics import *
+from configs import get_config
+
+# load default configs from ml_collection
+configs = get_config()
+
+# load independen configs for easy reference
+wandb_configs = configs.wandb_configs
+experiment_configs = configs.experiment_configs
+loss_alias_mappings = configs.loss_mappings
+inference_config = configs.inference
+
+def parse_args():
+    "Overriding default argments"
+    argparser = argparse.ArgumentParser(description='Process hyper-parameters')
+    argparser.add_argument('--image_resize_factor', type=int, default=experiment_configs.image_resize_factor, help='image resize factor')
+    argparser.add_argument('--batch_size', type=int, default=experiment_configs.batch_size, help='batch size')
+    argparser.add_argument('--seed', type=int, default=experiment_configs.seed, help='random seed')
+    argparser.add_argument('--num_epochs', type=int, default=experiment_configs.num_epochs, help='number of training epochs')
+    argparser.add_argument('--learning_rate', type=float, default=experiment_configs.learning_rate, help='learning rate')
+    argparser.add_argument('--weight_decay', type=float, default=experiment_configs.weight_decay, help='weight decay')
+    argparser.add_argument('--backbone', type=str, default=experiment_configs.backbone, help='timm backbone architecture')
+    argparser.add_argument('--loss_function', type=str, default=experiment_configs.loss_function, help='Loss function to use')
+    return argparser.parse_args()
 
 
-# Config
-FLAGS = flags.FLAGS
-CONFIG = config_flags.DEFINE_config_file("config")
-
-
-def main(_):
-    configs = CONFIG.value
-    wandb_configs = configs.wandb_configs
-    experiment_configs = configs.experiment_configs
-    loss_alias_mappings = configs.loss_mappings
-    inference_config = configs.inference
-
+def main(wandb_configs, experiment_configs, loss_alias_mappings, inference_config):
     run = wandb.init(
         name=wandb_configs.name,
         project=wandb_configs.project,
@@ -102,4 +111,6 @@ def main(_):
 
 
 if __name__ == "__main__":
-    app.run(main)
+    args = parse_args()
+    experiment_configs.update(vars(args))
+    main(wandb_configs, experiment_configs, loss_alias_mappings, inference_config)
