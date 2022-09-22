@@ -1,15 +1,24 @@
+# USAGE: python train.py --config configs.py
 import gc
 import wandb
+from absl import app
+from absl import flags
 import ml_collections
+from ml_collections.config_flags import config_flags
 from fastai.vision.all import *
 
 from segmentation.camvid_utils import *
 from segmentation.train_utils import *
 from segmentation.metrics import *
-from configs import get_config
 
 
-def train_fn(configs: ml_collections.ConfigDict):
+# Config
+FLAGS = flags.FLAGS
+CONFIG = config_flags.DEFINE_config_file("config")
+
+
+def main(_):
+    configs = CONFIG.value
     wandb_configs = configs.wandb_configs
     experiment_configs = configs.experiment_configs
     loss_alias_mappings = configs.loss_mappings
@@ -93,5 +102,4 @@ def train_fn(configs: ml_collections.ConfigDict):
 
 
 if __name__ == "__main__":
-    cfg = get_config()
-    train_fn(cfg)
+    app.run(main)
